@@ -1,0 +1,81 @@
+{
+  "name": "vscode-petitcom4-syntax",
+  "displayName": "プチコン4 SmileBASIC 4",
+  "version": "1.0.0",
+  "description": "プチコン４の構文解析ができる VSCode の拡張機能",
+  "publisher": "looksky495",
+  "license": "MIT",
+  "author": "",
+  "homepage": "https://github.com/looksky495/vscode-petitcom4-syntax#readme",
+  "bugs": {
+    "url": "https://github.com/looksky495/vscode-petitcom4-syntax/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/looksky495/vscode-petitcom4-syntax.git"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "smilebasic",
+    "petitcom",
+    "プチコン",
+    "basic"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "smilebasic4",
+        "aliases": [
+          "SmileBASIC 4",
+          "プチコン4"
+        ],
+        "extensions": [
+          ".sb4",
+          ".prg"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "smilebasic4",
+        "scopeName": "source.smilebasic4",
+        "path": "./syntaxes/smilebasic4.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "プチコン4 SmileBASIC 4",
+      "properties": {
+        "smilebasic4.diagnostics.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "構文エラーの診断（波線表示）を有効にします。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "build:grammar": "node out/tools/build-grammar.js",
+    "build": "npm run compile && npm run build:grammar",
+    "test": "npm run compile && node --test out/test/*.test.js",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "_readme": "このファイルは自動生成です。編集しても次のビルドで上書きされます。src/grammar/grammar.ts と src/language/ を直してから npm run build を実行してください。",
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SmileBASIC 4",
+  "scopeName": "source.smilebasic4",
+  "fileTypes": [
+    "sb4",
+    "prg"
+  ],
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#line-continuation"
+    },
+    {
+      "include": "#label-definition"
+    },
+    {
+      "include": "#label-reference"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#definition-name"
+    },
+    {
+      "include": "#control-keyword"
+    },
+    {
+      "include": "#word-operator"
+    },
+    {
+      "include": "#statement-keyword"
+    },
+    {
+      "include": "#shorthand"
+    },
+    {
+      "include": "#builtin"
+    },
+    {
+      "include": "#function-call"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#punctuation"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.apostrophe.smilebasic4",
+          "match": "'.*$"
+        },
+        {
+          "name": "comment.line.rem.smilebasic4",
+          "match": "\\b(?i:REM)(?![A-Za-z0-9_%#$]).*$"
+        }
+      ]
+    },
+    "string": {
+      "name": "string.quoted.double.smilebasic4",
+      "match": "\"[^\"\\n]*\"?"
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.smilebasic4",
+          "match": "(?i:&h)[0-9A-Fa-f]+"
+        },
+        {
+          "name": "constant.numeric.binary.smilebasic4",
+          "match": "(?i:&b)[01]+"
+        },
+        {
+          "name": "constant.numeric.decimal.smilebasic4",
+          "match": "(?<![A-Za-z0-9_])(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[Ee][+-]?\\d+)?"
+        }
+      ]
+    },
+    "line-continuation": {
+      "match": "(\\\\)[ \\t]*(.*)$",
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.continuation.smilebasic4"
+        },
+        "2": {
+          "name": "comment.line.ignored.smilebasic4"
+        }
+      }
+    },
+    "label-definition": {
+      "match": "^\\s*(@[A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "entity.name.label.smilebasic4"
+        }
+      }
+    },
+    "label-reference": {
+      "name": "variable.other.label.smilebasic4",
+      "match": "@[A-Za-z_][A-Za-z0-9_]*"
+    },
+    "constant": {
+      "name": "constant.language.smilebasic4",
+      "match": "#[A-Za-z_][A-Za-z0-9_]*"
+    },
+    "definition-name": {
+      "name": "meta.function.smilebasic4",
+      "match": "\\b((?i:DEF))\\s+([A-Za-z_][A-Za-z0-9_]*[%#$]?)",
+      "captures": {
+        "1": {
+          "name": "keyword.control.smilebasic4"
+        },
+        "2": {
+          "name": "entity.name.function.smilebasic4"
+        }
+      }
+    },
+    "control-keyword": {
+      "name": "keyword.control.smilebasic4",
+      "match": "\\b(?i:OTHERWISE|CONTINUE|ENDCASE|ENDLOOP|ELSEIF|REPEAT|RETURN|BREAK|ENDIF|GOSUB|UNTIL|WHILE|CASE|ELSE|GOTO|LOOP|NEXT|STEP|THEN|WEND|WHEN|DEF|END|FOR|IF|ON|TO)(?![A-Za-z0-9_%#$])"
+    },
+    "word-operator": {
+      "name": "keyword.operator.word.smilebasic4",
+      "match": "\\b(?i:AND|DIV|MOD|NOT|XOR|OR)(?![A-Za-z0-9_%#$])"
+    },
+    "statement-keyword": {
+      "name": "keyword.other.smilebasic4",
+      "match": "\\b(?i:RESTORE|COMMON|DEFOUT|LINPUT|TPRINT|INPUT|PRINT|CALL|DATA|EXEC|READ|SWAP|DIM|OUT|VAR)(?![A-Za-z0-9_%#$])"
+    },
+    "shorthand": {
+      "name": "keyword.other.shorthand.smilebasic4",
+      "match": "(?i:\\?\\?|\\bT\\?|\\?)"
+    },
+    "builtin": {
+      "name": "support.function.smilebasic4",
+      "match": "\\b(?i:CONTROLLER|ENVPROJECT|XCTRLSTYLE|XSUBSCREEN|BACKCOLOR|BACKTRACE|CLIPBOARD|ENVINPUT\\$|PCMSTREAM|PERFBEGIN|RANDOMIZE|SPHITINFO|TCFISHING|TCVEHICLE|BEEPSTOP|BGMCLEAR|BGMPAUSE|BGMPITCH|CHKLABEL|CLASSIFY|ENVFOCUS|FONTINFO|GPUTCHRP|GYROSYNC|HELPINFO|IRSPRITE|KEYBOARD|METAEDIT|METALOAD|METASAVE|MILLISEC|PRGNAME\\$|RECSTART|RINGCOPY|SNDMSBAL|SPCOLVEC|SPUNLINK|SYSPARAM|TALKSTOP|ANIMDEF|BEEPPAN|BEEPPIT|BEEPVOL|BGMCONT|BGMPLAY|BGMSETD|BGMSTOP|BQPARAM|BREPEAT|CALLIDX|CHKCALL|CHKFILE|DEFARGC|DEFOUTC|ENVLOAD|ENVSAVE|ENVSTAT|ENVTYPE|FADECHK|FORMAT\\$|FREEMEM|GCIRCLE|GPUTCHR|GSAMPLE|GTARGET|GUPDATE|HELPGET|INSPECT|IRSTART|IRSTATE|LFILTER|LMATRIX|MAINCNT|MBUTTON|PCMCONT|PCMSTOP|PERFEND|PRGEDIT|PRGGET\\$|PRGSEEK|PRGSIZE|PROJECT|PUSHKEY|RECDATA|RECSAVE|RECSTOP|SNDMVOL|SNDSTOP|SPCOLOR|SPHITRC|SPHITSP|SPLAYER|SPSCALE|SPSTART|SUBHIDE|SUBSHOW|SUBSTOP|TALKCHK|TCHOUSE|TCPIANO|TCPLANE|TCROBOT|TCVISOR|TSCREEN|TUPDATE|UNSHIFT|VIBRATE|WAVSETA|XSCREEN|ARRAY%|BGMCHK|BGMSET|BGMVAR|BGMVOL|BGMWET|BIQUAD|BUTTON|CHKCHR|CHKMML|CHKVAR|DEFARG|DELETE|DIALOG|DTREAD|EFCSET|EFCWET|FFTWFN|GARRAY|GCOLOR|GPAINT|INKEY\\$|INSERT|IRREAD|IRSTOP|LOCATE|OPTION|PCMPOS|PCMVOL|PRGDEL|PRGINS|PRGSET|RECCHK|RECLEN|RECPOS|REMOVE|RENAME|RESIZE|RESULT|RIGHT\\$|SCROLL|SPANIM|SPFUNC|SPHIDE|SPHOME|SPLINK|SPPAGE|SPSHOW|SPSTOP|SPUSED|SUBRUN|SUBST\\$|TARRAY|TBLEND|TCBIKE|TCOLOR|TCOORD|TCSUBM|TLAYER|TMREAD|TSCALE|TSTART|TYPEOF|WAVSET|ACCEL|ARYOP|CLEAR|COLOR|CONST|DATE\\$|EFCEN|FILES|FLOAT|FLOOR|GCLIP|GCOPY|GFILL|GLINE|GLOAD|GPGET|GPSET|GSAVE|GYROA|GYROV|INSTR|LAYER|LCLIP|LEFT\\$|LOADG|LOADV|MOUSE|ROUND|RSORT|SAVEG|SAVEV|SHIFT|SPCHK|SPCHR|SPCLR|SPCOL|SPDEF|SPOFS|SPROT|SPSET|SPVAR|STICK|TANIM|TCCAR|TCOPY|TFILL|TFUNC|THIDE|THOME|TIME\\$|TLOAD|TOUCH|TPAGE|TRACE|TSAVE|TSHOW|TSTOP|VSYNC|ACLS|ACOS|ASIN|ATAN|ATTR|BEEP|BIN\\$|CEIL|CHR\\$|CONT|COPY|COSH|ENUM|FADE|FILL|FIND|GBOX|GCLS|GTRI|HEX\\$|HSVF|IFFT|LAST|LIST|LOAD|MID\\$|PUSH|RGBF|RNDF|SAVE|SINH|SORT|STOP|STR\\$|TALK|TANH|TCHK|TOFS|TPUT|TROT|TVAR|WAIT|ABS|ASC|ATR|CLS|COS|DEC|DEG|EXP|FFT|HSV|INC|INT|KEY|LEN|LOG|MAX|MIN|NEW|POP|POW|RAD|RGB|RND|RUN|SGN|SIN|SQR|TAN|VAL)(?![A-Za-z0-9_%#$])"
+    },
+    "function-call": {
+      "name": "entity.name.function.smilebasic4",
+      "match": "\\b[A-Za-z_][A-Za-z0-9_]*[%#$]?(?=\\s*\\()"
+    },
+    "variable": {
+      "match": "\\b([A-Za-z_][A-Za-z0-9_]*)([%#$])?",
+      "captures": {
+        "1": {
+          "name": "variable.other.smilebasic4"
+        },
+        "2": {
+          "name": "storage.type.smilebasic4"
+        }
+      }
+    },
+    "operator": {
+      "name": "keyword.operator.smilebasic4",
+      "match": "<<<|>>>|<<\\+|>>\\+|<<|>>|==|!=|<=|>=|&&|\\|\\||[<>=+\\-*/!]"
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.statement.smilebasic4",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.separator.smilebasic4",
+          "match": "[,;]"
+        },
+        {
+          "name": "meta.brace.square.smilebasic4",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "meta.brace.round.smilebasic4",
+          "match": "[()]"
+        }
+      ]
+    }
+  }
+}
