@@ -84,7 +84,7 @@ export function buildGrammar(): TmGrammar {
     $schema: 'https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json',
     name: 'SmileBASIC 4',
     scopeName: 'source.smilebasic4',
-    fileTypes: ['sb4', 'prg'],
+    fileTypes: ['prg'],
 
     // 上から順に試される。コメントと文字列を先に置き、その中の記号を
     // 別のルールが拾ってしまわないようにしている。

@@ -4,7 +4,6 @@
   "name": "SmileBASIC 4",
   "scopeName": "source.smilebasic4",
   "fileTypes": [
-    "sb4",
     "prg"
   ],
   "patterns": [

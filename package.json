@@ -37,7 +37,6 @@
           "プチコン4"
         ],
         "extensions": [
-          ".sb4",
           ".prg"
         ],
         "configuration": "./language-configuration.json"
