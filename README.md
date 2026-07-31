@@ -19,7 +19,6 @@ VSCode 上での構文ハイライトと構文チェックを提供します。
 | 組み込み定数 | `#TRUE` `#C_RED` `#B_RRIGHT` |
 | 型サフィックス | `A$` `B%` `C#` のサフィックスを個別に色分け |
 | 略記 | `?`（PRINT）`T?`（TPRINT）`??`（INSPECT） |
-| 行継続 | `\` と、その後ろの読み飛ばされる部分をコメント色で表示 |
 
 大文字小文字は区別しません（`if` も `IF` も同じように色が付きます）。
 
@@ -29,12 +28,6 @@ VSCode 上での構文ハイライトと構文チェックを提供します。
 **TextMate の標準的なスコープ名**を割り当てているだけです。
 実際の色はお使いの VSCode テーマが決めるため、他の言語と同じ感覚で読めます。
 一般的なテーマを使っていれば、そのまま今どきの配色になります。
-
-一方、[arrow2nd/sb4-extension](https://marketplace.visualstudio.com/items?itemName=arrow2nd.sb4-extension)
-は**プチコン4 本体のエディタと同じ配色**を再現しています。
-Switch 上での見た目に慣れている方や、本体と行き来しながら書く方には、そちらが読みやすいはずです。
-
-どちらが優れているというものではないので、好みに合う方をお選びください。
 
 ### 構文チェック
 
@@ -149,6 +142,10 @@ syntaxes/
 - [演算子](https://sup4.smilebasic.com/doku.php?id=reference:%E6%BC%94%E7%AE%97%E5%AD%90)
 - [制御命令](https://sup4.smilebasic.com/doku.php?id=reference:%E5%88%B6%E5%BE%A1%E5%91%BD%E4%BB%A4)
 - [リファレンス目次](https://sup4.smilebasic.com/doku.php?id=reference:top)
+
+## おことわり
+
+このプログラムは主に AI によって作成されています。使用モデルはコミットメッセージを参照してください。 
 
 ## ライセンス
 
